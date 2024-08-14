@@ -1,0 +1,6 @@
+#!/bin/bash
+
+dotfiles_dir="~/.dotfiles"
+
+source $dotfiles_dir/.zshrc
+stow -d $dotfiles_dir && cd && sudo reboot

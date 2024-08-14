@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# TODO add --upgrade flag
+
+if uname != "Darwin"; then exit 1
+
+if ! command -v brew &> /dev/null; then
+    echo "homebrew not found, brew_installing homebrew."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    exit 1
+fi
+
+brew_install() {
+    if brew list $1 &>/dev/null; then
+        echo "$1 is already installed."
+    else
+        brew install $1
+    fi
+}
+
+brew_install_cask() {
+    if brew list --cask $1 &>/dev/null; then
+        echo "$1 is already installed."
+    else
+        brew install --cask $1
+    fi
+}
+
+brew_install stow
+brew_install fzf
+brew_install neovim
+brew_install ripgrep
+brew_install tree
+brew_install jq
+brew_install zip
+brew_install unzip
+brew_install age
+brew_install age-plugin-yubikey
+brew_install iftop
+brew_install btop
+brew_install starship
+brew_install_cask wezterm
+brew_install_cask font-monaspace
+brew_install_cask visual-studio-code
+
+brew autoremove
+brew cleanup
+
+echo "all packages should be installed, proceed with setting the defaults!"
+exit 0
