@@ -4,7 +4,8 @@
 
 if ! command -v brew &> /dev/null; then
     echo "homebrew not found, brew_installing homebrew."
-    curl -fsSL https://raw.githubusercontent.com/Homebrew/brew_install/HEAD/brew_install.sh
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    exit 1
 fi
 
 uname="$(uname)"
