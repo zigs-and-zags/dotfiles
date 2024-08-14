@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Inspired by: https://github.com/keijiro/dotfiles
+
+if ! command -v brew &> /dev/null; then
+    echo "homebrew not found, brew_installing homebrew."
+    curl -fsSL https://raw.githubusercontent.com/Homebrew/brew_install/HEAD/brew_install.sh
+fi
+
+uname="$(uname)"
+is_macos=$([ $uname = Darwin ] && echo true)
+is_linux=$([ $uname = Linux  ] && echo true)
+is_wsl=$([ $is_linux ] && grep -i -q "microsoft" /proc/version && echo true)
+dotfiles_dir="~/.dotfiles"
+
+# macOS
+
+brew_install() {
+    if brew list $1 &>/dev/null; then
+        echo "$1 is already brew_installed."
+    else
+        brew brew_install $1
+    fi
+}
+
+brew_install_cask() {
+    if brew list --cask $1 &>/dev/null; then
+        echo "$1 is already brew_installed."
+    else
+        brew brew_install --cask $1
+    fi
+}
+
+if [ $is_macos ]; then
+    brew_install stow
+    brew_install fzf
+    brew_install neovim
+    brew_install ripgrep
+    brew_install starship
+    brew_install_cask wezterm
+fi
+
+source $dotfiles_dir/.zshrc
+cd $dotfiles_dir && stow . && cd && exit 0
