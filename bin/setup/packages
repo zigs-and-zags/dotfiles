@@ -6,9 +6,8 @@ set -euo pipefail # Exit on error, unset variable or pipe fail
 if uname != "Darwin"; then echo "Darwin only" && exit 1; fi
 
 if ! command -v brew &> /dev/null; then
-    [ $EUID -ne 0 ] && echo "$0 is not running as root. Try using sudo." && exit 1
     echo "homebrew not found, installing homebrew."
-    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
