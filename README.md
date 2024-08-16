@@ -1,13 +1,13 @@
 # Install
-Darwin only for now. For a clean install, just drop the folowing in your terminal and watch it go brrrrrrrr!
+Darwin only for now. For a clean install, execute the folowing in your terminal, password + enter and and watch it go brrrrrrrr!
 ``` bash
-git clone https://github.com/zigs-and-zags ~/.dotfiles
+git clone https://github.com/zigs-and-zags/dotfiles.git ~/.dotfiles
 chmod +x ~/.dotfiles/bin/setup/packages
 chmod +x ~/.dotfiles/bin/setup/defaults
 ~/.dotfiles/bin/setup/packages
 cd ~/.dotfiles && stow .
 source ~/.zshrc
-sudo ~/.dotfiles/bin/setup/defaults
+~/.dotfiles/bin/setup/defaults
 sudo reboot
 ```
 

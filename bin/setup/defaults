@@ -2,20 +2,19 @@
 set -euo pipefail # Exit on error, unset variable or pipe fail
 
 if uname != "Darwin"; then echo "Darwin only" && exit 1; fi
-[ $EUID -ne 0 ] && echo "$0 is not running as root. Try using sudo." && exit 1
 
 # Avoids some fingerprinting
 scutil --set ComputerName mac
 scutil --set LocalHostName mac
 
 # Application level firewall
-sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
-sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setloggingmode on
-sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
+/usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
+/usr/libexec/ApplicationFirewall/socketfilterfw --setloggingmode on
+/usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
 
 # Prevents software from being automatically whitelisted
-sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsigned off
-sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsignedapp off
+/usr/libexec/ApplicationFirewall/socketfilterfw --setallowsigned off
+/usr/libexec/ApplicationFirewall/socketfilterfw --setallowsignedapp off
 
 # Screensaver password
 defaults write com.apple.screensaver askForPassword -int 1
@@ -38,12 +37,8 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock tilesize -int 32
 defaults write com.apple.dock launchanim -int 0
 
-# Safari
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2HyperlinkAuditingEnabled -bool false
-defaults write com.apple.SafariTechnologyPreview com.apple.Safari.ContentPageGroupIdentifier.WebKit2HyperlinkAuditingEnabled -bool false
-
 # Set up a blocklist of malicious hosts if one isn't present
-[ $(wc -l < /etc/hosts | bc) -lt 1000 ] && curl https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts | sudo tee -a /etc/hosts
+[ $(wc -l < /etc/hosts | bc) -lt 1000 ] && curl https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts | tee -a /etc/hosts
 
 echo "Defaults have been set, please reboot to ensure they all take effect."
 exit 0
