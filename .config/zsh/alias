@@ -1,11 +1,11 @@
-	# os
+# os
 alias grep="grep --color=auto"
 alias cp="cp -i"
 alias mv="mv -i"
 alias ls="ls --color"
 alias la="ls -al --color"
 
-	# tools
+# tools
 alias vim="nvim"
 alias vi="nvim"
 alias e="nvim"
@@ -15,3 +15,4 @@ alias cheat='f() { curl https://cheat.sh/"$@"; unset -f f; }; f'
 alias wiz="ollama run wizardlm2:7b"
 alias dol="ollama run dolphin-llama3:latest"
 alias exr="exercism"
+alias woops="git reset HEAD~"

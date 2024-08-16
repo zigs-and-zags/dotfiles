@@ -6,7 +6,7 @@ set -euo pipefail # Exit on error, unset variable or pipe fail
 if uname != "Darwin"; then echo "Darwin only" && exit 1; fi
 
 if ! command -v brew &> /dev/null; then
-    echo "homebrew not found, installing homebrew."
+    echo "Homebrew not found, installing homebrew."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
@@ -32,6 +32,7 @@ brew_install_cask() {
 }
 
 brew_install stow
+brew_install zoxide
 brew_install fzf
 brew_install neovim
 brew_install ripgrep
@@ -51,11 +52,9 @@ brew_install_cask visual-studio-code
 brew_install_cask nikitabobko/tap/aerospace
 
 echo "Cleaning up..."
-[ -f ~/.zsh_history ] && rm -rf ~/.zsh_history
-[ -f ~/.zsh_sessions ] && rm -rf ~/.zsh_sessions
-[ ! -f ~/.zshrc ] && cd ~/.dotfiles && /opt/homebrew/bin/stow . # TODO remove "by convention dir"
 brew autoremove
 brew cleanup
+[ -f ~/.zsh_history ] && rm -rf ~/.zsh_history
 
-echo "All packages should be installed, proceed with setting the defaults!"
+echo "Fresh packages have been brewed! If this is your first install, please stow the dotfiles, source .zshrc and setup defaults!"
 exit 0

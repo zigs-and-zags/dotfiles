@@ -1,6 +1,19 @@
-# Manual Install
+# Install
+Darwin only for now. For a clean install, just drop the folowing in your terminal and watch it go brrrrrrrr!
+``` bash
+git clone https://github.com/zigs-and-zags ~/.dotfiles
+chmod +x ~/.dotfiles/bin/setup/packages
+chmod +x ~/.dotfiles/bin/setup/defaults
+~/.dotfiles/bin/setup/packages
+cd ~/.dotfiles && stow .
+source ~/.zshrc
+sudo ~/.dotfiles/bin/setup/defaults
+sudo reboot
+```
+
+# Install Manually
 ## App Store
-- Bitwarden
+- PW manager
 ## Security - Objective C
 - [LuLu](https://objective-see.org/products/lulu.html)
 - [BlockBlock](https://objective-see.org/products/blockblock.html)
@@ -13,8 +26,8 @@
 - Lockdown mode
 - Disable Siri
 - In settings > "Modifier Keys" -> remap capslock to escape
-- Enable secure keyboar entry in the stock terminal app (could brick when using with yubikey, use wevterm for this)
-- Check root certs
+- Enable secure keyboar entry in the stock terminal app (could brick when using with yubikey)
+- Mess with some root certs
 - Secure safari
 
 # TODO

@@ -42,7 +42,8 @@ defaults write com.apple.dock launchanim -int 0
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2HyperlinkAuditingEnabled -bool false
 defaults write com.apple.SafariTechnologyPreview com.apple.Safari.ContentPageGroupIdentifier.WebKit2HyperlinkAuditingEnabled -bool false
 
-# Set up a blocklist of malicious hosts if none is present
+# Set up a blocklist of malicious hosts if one isn't present
 [ $(wc -l < /etc/hosts | bc) -lt 1000 ] && curl https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts | sudo tee -a /etc/hosts
 
-reboot
+echo "Defaults have been set, please reboot to ensure they all take effect."
+exit 0

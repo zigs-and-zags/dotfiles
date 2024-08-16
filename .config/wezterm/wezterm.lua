@@ -6,8 +6,7 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 config.color_scheme = "Catppuccin Macchiato"
-config.font =
-    wezterm.font("MonaspiceKr Nerd Font Mono")
+config.font = wezterm.font("MonaspiceKr Nerd Font Mono")
 config.font_size = 14
 
 -- Gets rid of window buttons
