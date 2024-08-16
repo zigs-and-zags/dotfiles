@@ -1,0 +1,18 @@
+# This is Git's per-user configuration file.
+[user]
+	name = tristan
+	email = tristan.colfs@gmail.com
+[init]
+	defaultBranch = main
+[format]
+	pretty = oneline
+[core]
+	editor = code --wait
+	excludesfile = ~/.gitignore_global
+[color]
+	status = always
+[credential]
+	helper = 
+	helper = /usr/local/bin/git-credential-manager
+[credential "https://github.com/zigs-and-zags"]
+	username = zigs-and-zags

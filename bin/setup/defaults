@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if uname != "Darwin"; then exit 1
+
+rm -rf ~/.zsh_history
+rm -rf  ~/.zsh_sessions
+
 dotfiles_dir="~/.dotfiles"
 
 source $dotfiles_dir/.zshrc
