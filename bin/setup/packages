@@ -53,7 +53,7 @@ brew_install_cask nikitabobko/tap/aerospace
 echo "Cleaning up..."
 [ -f ~/.zsh_history ] && rm -rf ~/.zsh_history
 [ -f ~/.zsh_sessions ] && rm -rf ~/.zsh_sessions
-[ ! -f ~/.zshrc ] && cd ~/.dotfiles && stow . # TODO remove "by convention dir"
+[ ! -f ~/.zshrc ] && cd ~/.dotfiles && /opt/homebrew/bin/stow . # TODO remove "by convention dir"
 brew autoremove
 brew cleanup
 

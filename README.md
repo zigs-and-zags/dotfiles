@@ -12,9 +12,10 @@
 # Settings
 - Lockdown mode
 - Disable Siri
+- In settings > "Modifier Keys" -> remap capslock to escape
 - Enable secure keyboar entry in the stock terminal app (could brick when using with yubikey, use wevterm for this)
-- check root certs
-- secure safari
+- Check root certs
+- Secure safari
 
 # TODO
 - https://github.com/drduh/macOS-Security-and-Privacy-Guide?tab=readme-ov-file#ssh
