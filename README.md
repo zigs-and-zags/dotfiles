@@ -5,10 +5,10 @@ git clone https://github.com/zigs-and-zags/dotfiles.git ~/.dotfiles
 chmod +x ~/.dotfiles/bin/setup/packages
 chmod +x ~/.dotfiles/bin/setup/defaults
 ~/.dotfiles/bin/setup/packages
-cd ~/.dotfiles && stow .
+cd ~/.dotfiles && /opt/homebrew/bin/stow .
 source ~/.zshrc
 ~/.dotfiles/bin/setup/defaults
-sudo reboot
+echo "Scripts all done cap'n! Continue with the manual setup (https://github.com/zigs-and-zags/dotfiles)"
 ```
 
 # Install Manually
