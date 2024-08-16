@@ -1,11 +1,45 @@
 #!/bin/bash
+set -euo pipefail # Exit on error, unset variable or pipe fail
 
-if uname != "Darwin"; then exit 1; fi
+if uname != "Darwin"; then echo "Darwin only" && exit 1; fi
+[ $EUID -ne 0 ] && echo "$0 is not running as root. Try using sudo." && exit 1
 
-rm -rf ~/.zsh_history
-rm -rf  ~/.zsh_sessions
+# Avoids some fingerprinting
+scutil --set ComputerName mac
+scutil --set LocalHostName mac
 
-dotfiles_dir="~/.dotfiles"
+# Application level firewall
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setloggingmode on
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
 
-source $dotfiles_dir/.zshrc
-stow -d $dotfiles_dir && cd && sudo reboot
+# Prevents software from being automatically whitelisted
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsigned off
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsignedapp off
+
+# Screensaver password
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 10
+# Expose hidden files in Library
+defaults write com.apple.finder AppleShowAllFiles -bool true
+chflags nohidden ~/Library
+# Show all extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+# No default saving to iCloud
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+# No crash reporting popup
+defaults write com.apple.CrashReporter DialogType none
+# Behavior
+defaults write NSGlobalDomain KeyRepeat -int 2; # 120, 90, 60, 30, 12, 6, 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15; # 120, 94, 68, 35, 25, 15
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.sound.beep.volume -float 0.0
+defaults write NSGlobalDomain com.apple.sound.beep.feedback -int 0
+# Safari
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2HyperlinkAuditingEnabled -bool false
+defaults write com.apple.SafariTechnologyPreview com.apple.Safari.ContentPageGroupIdentifier.WebKit2HyperlinkAuditingEnabled -bool false
+
+# Set up a blocklist of malicious hosts if none is present
+[ $(wc -l < /etc/hosts | bc) -lt 1000 ] && curl https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts | sudo tee -a /etc/hosts
+
+reboot

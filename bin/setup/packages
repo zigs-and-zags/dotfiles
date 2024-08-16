@@ -1,19 +1,20 @@
 #!/bin/bash
+set -euo pipefail # Exit on error, unset variable or pipe fail
 
 # TODO add --upgrade flag
 
-if uname != "Darwin"; then exit 1; fi
+if uname != "Darwin"; then echo "Darwin only" && exit 1; fi
+
+if ! command -v brew &> /dev/null; then
+    [ $EUID -ne 0 ] && echo "$0 is not running as root. Try using sudo." && exit 1
+    echo "homebrew not found, installing homebrew."
+    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 eval "export HOMEBREW_NO_ANALYTICS=1"
 eval "export HOMEBREW_NO_INSECURE_REDIRECT=1"
 eval "export HOMEBREW_CASK_OPTS=--require-sha"
-
-if ! command -v brew &> /dev/null; then
-    echo "homebrew not found, installing homebrew."
-    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    exit 1
-fi
 
 brew_install() {
     if brew list $1 &>/dev/null; then
@@ -51,8 +52,11 @@ brew_install_cask visual-studio-code
 brew_install_cask nikitabobko/tap/aerospace
 
 echo "Cleaning up..."
+[ -f ~/.zsh_history ] && rm -rf ~/.zsh_history
+[ -f ~/.zsh_sessions ] && rm -rf ~/.zsh_sessions
+[ ! -f ~/.zshrc ] && cd ~/.dotfiles && stow . # TODO remove "by convention dir"
 brew autoremove
 brew cleanup
 
-echo "all packages should be installed, proceed with setting the defaults!"
+echo "All packages should be installed, proceed with setting the defaults!"
 exit 0
