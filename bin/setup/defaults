@@ -29,6 +29,7 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # No crash reporting popup
 defaults write com.apple.CrashReporter DialogType none
 # Behavior
+defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool false
 defaults write NSGlobalDomain KeyRepeat -int 2 # 120, 90, 60, 30, 12, 6, 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15 # 120, 94, 68, 35, 25, 15
 defaults write NSGlobalDomain AppleWindowRounding -int 0
