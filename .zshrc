@@ -1,5 +1,5 @@
 export HOMEBREW_PATH="/opt/homebrew/bin:/opt/homebrew/sbin"
-export PATH="$HOMEBREW_PATH:$PATH"
+export PATH="$OPENSSH_PATH:$HOMEBREW_PATH:$PATH"
 
 export EDITOR=nvim
 export GIT_EDITOR=nvim
@@ -7,9 +7,6 @@ export VISUAL=nvim
 export DIFFPROG="nvim -d"
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
-
-# needed for z init?
-# eval "$(/opt/homebrew/bin/brew shellenv)"
 
 autoload -Uz compinit && compinit   # loads autocompletions
 _comp_options+=(globdots)           # includes hidden files.
@@ -57,7 +54,6 @@ precmd() { vcs_info }
 setopt prompt_subst
 zstyle ':vcs_info:git:*' formats " %F{172}[%F{247}%b%F{172}]"
 
-# PROMPT="%B%F{247}%n%F{172}@%F{247}%m %F{172}➜ %F{117}%c%{$reset_color%}"
 PROMPT="%F{117}%c%{$reset_color%}"
 PROMPT+="\$vcs_info_msg_0_ "
 
@@ -84,4 +80,4 @@ export GUILE_LOAD_COMPILED_PATH="/opt/homebrew/lib/guile/3.0/site-ccache"
 export GUILE_SYSTEM_EXTENSIONS_PATH="/opt/homebrew/lib/guile/3.0/extensions"
 
 # Dotnet config
-export DOTNER_ROOT="/opt/homebrew/opt/dotnet/libexec"
+export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
