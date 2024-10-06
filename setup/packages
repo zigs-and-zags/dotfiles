@@ -13,12 +13,11 @@ eval "export HOMEBREW_NO_ANALYTICS=1"
 eval "export HOMEBREW_NO_INSECURE_REDIRECT=1"
 eval "export HOMEBREW_CASK_OPTS=--require-sha"
 
-brew bundle --file=~/dotfiles/bin/setup/Brewfile
+brew bundle --file=~/dotfiles/setup/brewfile
 
 echo "Cleaning up..."
 brew autoremove
 brew cleanup
-[ -f ~/.zsh_history ] && rm -rf ~/.zsh_history
+echo "Homebrew packages have been installed!"
 
-echo "Fresh packages have been brewed! If this is your first install, please stow the dotfiles, source .zshrc and setup defaults!"
 exit 0

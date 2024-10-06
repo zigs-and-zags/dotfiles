@@ -27,5 +27,5 @@ _darcs
 \flake.nix
 \flake.lock
 \.stow-local-ignore
-\bin
+\setup
 \private
