@@ -28,3 +28,4 @@ _darcs
 \flake.lock
 \.stow-local-ignore
 \bin
+\private
