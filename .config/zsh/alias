@@ -12,7 +12,5 @@ alias e="nvim"
 alias htop="sudo htop" # needed to monitor all procs
 
 alias cheat='f() { curl https://cheat.sh/"$@"; unset -f f; }; f'
-alias wiz="ollama run wizardlm2:7b"
-alias dol="ollama run dolphin-llama3:latest"
 alias exr="exercism"
 alias woops="git reset HEAD~"
