@@ -28,6 +28,7 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # No crash reporting popup
 defaults write com.apple.CrashReporter DialogType none
+
 # Behavior
 defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool false
 defaults write NSGlobalDomain KeyRepeat -int 2 # 120, 90, 60, 30, 12, 6, 2
@@ -37,6 +38,8 @@ defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock tilesize -int 32
 defaults write com.apple.dock launchanim -int 0
+
+# TODO set background?
 
 # Set up a blocklist of malicious hosts if one isn't present
 [ $(wc -l < /etc/hosts | bc) -lt 1000 ] && curl https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts | tee -a /etc/hosts

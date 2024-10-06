@@ -1,8 +1,6 @@
 #!/bin/bash
 set -euo pipefail # Exit on error, unset variable or pipe fail
 
-# TODO add --upgrade flag
-
 if uname != "Darwin"; then echo "Darwin only" && exit 1; fi
 
 if ! command -v brew &> /dev/null; then
@@ -15,41 +13,7 @@ eval "export HOMEBREW_NO_ANALYTICS=1"
 eval "export HOMEBREW_NO_INSECURE_REDIRECT=1"
 eval "export HOMEBREW_CASK_OPTS=--require-sha"
 
-brew_install() {
-    if brew list $1 &>/dev/null; then
-        echo "$1 is already installed."
-    else
-        brew install $1
-    fi
-}
-
-brew_install_cask() {
-    if brew list --cask $1 &>/dev/null; then
-        echo "$1 is already installed."
-    else
-        brew install --cask $1
-    fi
-}
-
-brew_install stow
-brew_install zoxide
-brew_install fzf
-brew_install neovim
-brew_install ripgrep
-brew_install tree
-brew_install jq
-brew_install age
-brew_install age-plugin-yubikey
-brew_install iftop
-brew_install htop
-brew_install exercism
-brew_install newsboat
-brew_install guile
-brew_install dotnet
-brew_install_cask wezterm
-brew_install_cask font-monaspace-nerd-font
-brew_install_cask visual-studio-code
-brew_install_cask nikitabobko/tap/aerospace
+brew bundle --file=~/dotfiles/bin/setup/Brewfile
 
 echo "Cleaning up..."
 brew autoremove
