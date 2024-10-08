@@ -17,6 +17,7 @@ brew 'newsboat'
 brew 'ollama'
 brew 'dotnet'
 brew 'typst'
+brew 'pandoc'
 
 cask 'alacritty'
 cask 'font-monaspace-nerd-font'
