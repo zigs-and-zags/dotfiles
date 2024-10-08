@@ -16,6 +16,7 @@ brew 'exercism'
 brew 'newsboat'
 brew 'ollama'
 brew 'dotnet'
+brew 'guile'
 brew 'typst'
 brew 'pandoc'
 

@@ -1,11 +1,11 @@
 export HOMEBREW_PATH="/opt/homebrew/bin:/opt/homebrew/sbin"
 export PATH="$HOMEBREW_PATH:$PATH"
 
-export EDITOR=nvim
-export GIT_EDITOR=nvim
-export VISUAL=nvim
-export DIFFPROG="nvim -d"
-export MANPAGER='nvim +Man!'
+export EDITOR=code            # prev: nvim
+export GIT_EDITOR=code        # prev: nvim
+export VISUAL=code            # prev: nvim
+export DIFFPROG="vim -d"      # prev: nvim
+export MANPAGER='vim +Man!'   # prev: nvim
 export MANWIDTH=999
 
 autoload -Uz compinit && compinit   # loads autocompletions
@@ -76,3 +76,8 @@ export HOMEBREW_CASK_OPTS=--require-sha
 
 # Dotnet config
 export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
+
+# Guile scheme config
+export GUILE_LOAD_PATH="/opt/homebrew/share/guile/site/3.0"
+export GUILE_LOAD_COMPILED_PATH="/opt/homebrew/lib/guile/3.0/site-ccache"
+export GUILE_SYSTEM_EXTENSIONS_PATH="/opt/homebrew/lib/guile/3.0/extensions"
