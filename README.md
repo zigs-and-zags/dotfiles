@@ -4,7 +4,7 @@ git clone https://github.com/zigs-and-zags/dotfiles.git ~/dotfiles
 chmod +x ~/dotfiles/setup/packages
 chmod +x ~/dotfiles/setup/defaults
 ~/dotfiles/setup/packages
-cd ~/dotfiles && /opt/homebrew/bin/stow .
+/opt/homebrew/bin/stow -t ~/ ~/dotfiles
 source ~/.zshrc
 ~/dotfiles/setup/defaults
 echo "Scripts all done cap'n! Reboot and enjoy!"
@@ -20,8 +20,8 @@ chmod +x ~/dotfiles/private/setup/post-install
 chmod +x ~/dotfiles/setup/packages
 chmod +x ~/dotfiles/setup/defaults
 ~/dotfiles/setup/packages
-cd ~/dotfiles/private && /opt/homebrew/bin/stow .
-cd ~/dotfiles && /opt/homebrew/bin/stow .
+/opt/homebrew/bin/stow -t ~/dotfiles ~/dotfiles/private
+/opt/homebrew/bin/stow -t ~/ ~/dotfiles
 source ~/.zshrc
 ~/dotfiles/setup/defaults
 ~/dotfiles/private/setup/post-install
