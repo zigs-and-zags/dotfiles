@@ -3,9 +3,8 @@ set -euo pipefail # Exit on error, unset variable or pipe fail
 
 if uname != "Darwin"; then echo "Darwin only" && exit 1; fi
 
-# Avoids some fingerprinting
-scutil --set ComputerName mac
-scutil --set LocalHostName mac
+scutil --set ComputerName lance
+scutil --set LocalHostName lance
 
 # Application level firewall
 /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
@@ -30,6 +29,7 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.CrashReporter DialogType none
 
 # Behavior
+defaults write com.apple.dock expose-group-apps -bool true
 defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool false
 defaults write NSGlobalDomain KeyRepeat -int 2 # 120, 90, 60, 30, 12, 6, 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15 # 120, 94, 68, 35, 25, 15

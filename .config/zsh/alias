@@ -6,10 +6,9 @@ alias ls="ls --color"
 alias la="ls -al --color"
 
 # tools
-alias vim="nvim"
-alias vi="nvim"
-alias e="nvim"
+alias e="vim"
 alias htop="sudo htop" # needed to monitor all procs
+alias fzf="fzf --preview='cat {}'"
 
 alias cheat='f() { curl https://cheat.sh/"$@"; unset -f f; }; f'
 alias exr="exercism"
