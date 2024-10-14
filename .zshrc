@@ -13,6 +13,7 @@ _comp_options+=(globdots)           # includes hidden files.
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local}/share/zinit/zinit.git"
+
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
    mkdir -p "$(dirname $ZINIT_HOME)"
@@ -74,10 +75,8 @@ export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
 export HOMEBREW_CASK_OPTS=--require-sha
 
-# Dotnet config
+# You might not need these
 export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
-
-# Guile scheme config
 export GUILE_LOAD_PATH="/opt/homebrew/share/guile/site/3.0"
 export GUILE_LOAD_COMPILED_PATH="/opt/homebrew/lib/guile/3.0/site-ccache"
 export GUILE_SYSTEM_EXTENSIONS_PATH="/opt/homebrew/lib/guile/3.0/extensions"

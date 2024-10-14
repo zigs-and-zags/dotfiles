@@ -2,14 +2,15 @@
 alias grep="grep --color=auto"
 alias cp="cp -i"
 alias mv="mv -i"
-alias ls="ls --color"
-alias la="ls -al --color"
+alias la="ls -al"
+
+# movement
+alias xx="&& exit"
+alias ee='z $1 && code . && exit'
 
 # tools
 alias e="vim"
-alias htop="sudo htop" # needed to monitor all procs
 alias fzf="fzf --preview='cat {}'"
-
 alias cheat='f() { curl https://cheat.sh/"$@"; unset -f f; }; f'
 alias exr="exercism"
 alias woops="git reset HEAD~"

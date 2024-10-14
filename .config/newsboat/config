@@ -1,6 +1,0 @@
-auto-reload yes
-
-color title yellow black bold
-color info yellow black bold
-color listfocus black black bold
-color listfocus_unread yellow black bold

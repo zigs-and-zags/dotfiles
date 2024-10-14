@@ -3,17 +3,9 @@ set -euo pipefail # Exit on error, unset variable or pipe fail
 
 if uname != "Darwin"; then echo "Darwin only" && exit 1; fi
 
-scutil --set ComputerName lance
-scutil --set LocalHostName lance
-
-# Application level firewall
-/usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
-/usr/libexec/ApplicationFirewall/socketfilterfw --setloggingmode on
-/usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
-
-# Prevents software from being automatically whitelisted
-/usr/libexec/ApplicationFirewall/socketfilterfw --setallowsigned off
-/usr/libexec/ApplicationFirewall/socketfilterfw --setallowsignedapp off
+# Computer naming
+scutil --set ComputerName mac
+scutil --set LocalHostName mac
 
 # Screensaver password
 defaults write com.apple.screensaver askForPassword -int 1
@@ -38,8 +30,6 @@ defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock tilesize -int 32
 defaults write com.apple.dock launchanim -int 0
-
-# TODO set background?
 
 # Set up a blocklist of malicious hosts if one isn't present
 [ $(wc -l < /etc/hosts | bc) -lt 1000 ] && curl https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts | tee -a /etc/hosts

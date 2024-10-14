@@ -1,27 +1,13 @@
 cask_args appdir: '~/Applications', require_sha: true
 
-# brew 'neovim'
-
 brew 'stow'
 brew 'zoxide'
 brew 'ripgrep'
 brew 'fzf'
 brew 'tree'
 brew 'jq'
-brew 'age'
-brew 'age-plugin-yubikey'
 brew 'iftop'
 brew 'htop'
-brew 'exercism'
-brew 'newsboat'
-brew 'ollama'
-brew 'dotnet'
-brew 'guile'
-brew 'typst'
-brew 'pandoc'
 
-cask 'alacritty'
-cask 'font-monaspace-nerd-font'
 cask 'visual-studio-code'
 cask 'nikitabobko/tap/aerospace'
-cask 'element'
