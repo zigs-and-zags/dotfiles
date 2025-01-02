@@ -19,6 +19,9 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # No crash reporting popup
 defaults write com.apple.CrashReporter DialogType none
+# Screenshots
+defaults write com.apple.screencapture type jpg
+defaults write com.apple.screencapture location ~/Pictures/screenshots
 
 # Behavior
 defaults write com.apple.dock expose-group-apps -bool true

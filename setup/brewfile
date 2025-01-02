@@ -6,8 +6,6 @@ brew 'ripgrep'
 brew 'fzf'
 brew 'tree'
 brew 'jq'
-brew 'iftop'
-brew 'htop'
 
 cask 'visual-studio-code'
 cask 'nikitabobko/tap/aerospace'

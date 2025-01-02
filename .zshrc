@@ -8,8 +8,14 @@ export DIFFPROG="vim -d"      # prev: nvim
 export MANPAGER='vim +Man!'   # prev: nvim
 export MANWIDTH=999
 
+# TODO nvim and tmux configs
+
 autoload -Uz compinit && compinit   # loads autocompletions
 _comp_options+=(globdots)           # includes hidden files.
+
+# Setup custom zsh functions
+fpath=(~/.config/zsh/functions $fpath)
+autoload -Uz mkcoursedir            # lazy load functions
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local}/share/zinit/zinit.git"
