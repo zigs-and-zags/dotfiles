@@ -1,0 +1,23 @@
+shell-integration = zsh
+
+# Theme
+background-opacity = 0.8
+background-blur-radius = 20
+theme = Tomorrow Night Burns
+
+# Clipboard
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = false
+
+# Window
+window-theme = dark
+window-padding-y = 10,0
+window-padding-x = 10,0
+window-padding-balance = true
+macos-titlebar-style = hidden
+confirm-close-surface = false
+quit-after-last-window-closed = true
+window-save-state = always
+
+
