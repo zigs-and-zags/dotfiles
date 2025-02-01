@@ -1,21 +1,11 @@
-export HOMEBREW_PATH="/opt/homebrew/bin:/opt/homebrew/sbin"
-export PATH="$HOMEBREW_PATH:$PATH"
+export PATH="/Users/tristan/.dotnet/tools:/Users/tristan/.local/homebrew/opt/dotnet/libexec:$PATH"
 
-export EDITOR=code            # prev: nvim
-export GIT_EDITOR=code        # prev: nvim
-export VISUAL=code            # prev: nvim
-export DIFFPROG="vim -d"      # prev: nvim
-export MANPAGER='vim +Man!'   # prev: nvim
+export EDITOR=hx            # prev: nvim
+export GIT_EDITOR=code      # prev: nvim
+export VISUAL=code          # prev: nvim
+export DIFFPROG="code"      # TODO
+export MANPAGER='glow'      # TODO
 export MANWIDTH=999
-
-# TODO nvim and tmux configs
-
-autoload -Uz compinit && compinit   # loads autocompletions
-_comp_options+=(globdots)           # includes hidden files.
-
-# Setup custom zsh functions
-fpath=(~/.config/zsh/functions $fpath)
-autoload -Uz mkcoursedir            # lazy load functions
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local}/share/zinit/zinit.git"
@@ -81,8 +71,4 @@ export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
 export HOMEBREW_CASK_OPTS=--require-sha
 
-# You might not need these
-export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
-export GUILE_LOAD_PATH="/opt/homebrew/share/guile/site/3.0"
-export GUILE_LOAD_COMPILED_PATH="/opt/homebrew/lib/guile/3.0/site-ccache"
-export GUILE_SYSTEM_EXTENSIONS_PATH="/opt/homebrew/lib/guile/3.0/extensions"
+export DOTNET_ROOT="~/.local/bin/dotnet"

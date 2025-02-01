@@ -6,11 +6,12 @@ alias la="ls -al"
 
 # movement
 alias xx="&& exit"
-alias ee='z $1 && code . && exit'
 
 # tools
-alias e="vim"
+alias e="hx"
 alias fzf="fzf --preview='cat {}'"
 alias cheat='f() { curl https://cheat.sh/"$@"; unset -f f; }; f'
 alias exr="exercism"
 alias woops="git reset HEAD~"
+alias ai="ollama run deepseek-r1:8b"
+alias glow="glow --style tokyo-night -p"
