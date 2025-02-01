@@ -1,0 +1,4 @@
+[[language]]
+name = "racket"
+file-types = ["rkt"]
+formatter = { command = "racket-fixw" }
