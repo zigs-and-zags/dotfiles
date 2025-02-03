@@ -1,11 +1,18 @@
-export PATH="/Users/tristan/.dotnet/tools:/Users/tristan/.local/homebrew/opt/dotnet/libexec:$PATH"
+export HOMEBREW_PATH="/opt/homebrew/bin:/opt/homebrew/sbin"
+export CUSTOM_BIN="/Users/tristan/.local/bin"
+export PATH="$HOMEBREW_PATH:$CUSTOM_BIN:$PATH"
 
 export EDITOR=hx            # prev: nvim
 export GIT_EDITOR=code      # prev: nvim
 export VISUAL=code          # prev: nvim
 export DIFFPROG="code"      # TODO
-export MANPAGER='glow'      # TODO
 export MANWIDTH=999
+
+autoload -Uz compinit && compinit   # loads autocompletions
+_comp_options+=(globdots)           # includes hidden files.
+# Setup custom zsh functions
+fpath=(~/.config/zsh/functions $fpath)
+autoload -Uz mkcoursedir            # lazy load functions
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local}/share/zinit/zinit.git"
@@ -63,12 +70,11 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-eval "$(fzf --zsh)"        # activates fzf
-eval "$(zoxide init zsh)"  # activates zoxide
+#eval "$(fzf --zsh)"        # activates fzf
+#eval "$(zoxide init zsh)"  # activates zoxide
 
 # Homebrew config
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
 export HOMEBREW_CASK_OPTS=--require-sha
 
-export DOTNET_ROOT="~/.local/bin/dotnet"
