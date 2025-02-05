@@ -1,4 +1,11 @@
+[language-server.from-racket-bin]
+command = "racket"
+args = ["-l", "racket-langserver"]
+
 [[language]]
-name = "racket"
-file-types = ["rkt"]
+name = "scheme"
+scope = "source.scheme"
+file-types = ["rkt", "scm"]
+indent = { tab-width = 2, unit = "  " }
 formatter = { command = "racket-fixw" }
+language-servers = [ "from-racket-bin" ]
