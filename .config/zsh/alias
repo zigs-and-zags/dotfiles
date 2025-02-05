@@ -1,16 +1,13 @@
-# os
 alias grep="grep --color=auto"
 alias cp="cp -i"
 alias mv="mv -i"
-alias la="ls -al"
-
-# movement
+alias la="ls -al --color"
+alias ls="ls --color"
 alias xx="&& exit"
 
-# tools
+#alias v="zellij --layout /Users/tristan/.dotfiles/.config/zellij/layouts/default_air.kdl"
 alias e="hx"
 alias fzf="fzf --preview='cat {}'"
-alias cheat='f() { curl https://cheat.sh/"$@"; unset -f f; }; f'
 alias exr="exercism"
 alias woops="git reset HEAD~"
 alias ai="ollama run deepseek-r1:8b"

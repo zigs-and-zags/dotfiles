@@ -14,6 +14,7 @@ eval "export HOMEBREW_NO_INSECURE_REDIRECT=1"
 eval "export HOMEBREW_CASK_OPTS=--require-sha"
 
 brew bundle --file=~/dotfiles/setup/brewfile
+[ -f "~/dotfiles/setup/private-brewfile" ] && brew bundle --file=~/dotfiles/setup/private-brewfile
 
 echo "Cleaning up..."
 brew autoremove

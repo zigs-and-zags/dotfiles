@@ -2,7 +2,6 @@ cask_args appdir: '~/Applications', require_sha: true
 
 brew 'stow'
 brew 'zoxide'
-brew 'ripgrep'
 brew 'fzf'
 brew 'tree'
 brew 'jq'
