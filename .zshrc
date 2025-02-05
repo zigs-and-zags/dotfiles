@@ -8,6 +8,8 @@ export VISUAL=code          # prev: nvim
 export DIFFPROG="code"      # TODO
 export MANWIDTH=999
 
+export ZEIT_DB=~/.config/zeit/zeit.db
+
 autoload -Uz compinit && compinit   # loads autocompletions
 _comp_options+=(globdots)           # includes hidden files.
 # Setup custom zsh functions
@@ -70,8 +72,8 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-#eval "$(fzf --zsh)"        # activates fzf
-#eval "$(zoxide init zsh)"  # activates zoxide
+eval "$(fzf --zsh)"        # activates fzf
+eval "$(zoxide init zsh)"  # activates zoxide
 
 # Homebrew config
 export HOMEBREW_NO_ANALYTICS=1
