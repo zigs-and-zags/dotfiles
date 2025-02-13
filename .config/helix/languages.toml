@@ -9,3 +9,21 @@ file-types = ["rkt", "scm"]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "racket-fixw" }
 language-servers = [ "from-racket-bin" ]
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[[language]]
+name = "python"
+auto-format = true
+language-servers = [ "ruff" ]
+
+[language-server.tinymist]
+command = "tinymist"
+config = { exportPdf = "onType", outputPath = "$root/target/$dir/$name" }
+
+[[language]]
+name = "typst"
+language-servers = ["tinymist"]
+
