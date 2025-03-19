@@ -1,2 +1,14 @@
 [manager]
 linemode = "size_and_mtime"
+ratio = [0, 1, 1]
+
+[[manager.prepend_keymap]]
+on = "!"
+run = 'shell "$SHELL" --block'
+desc = "Open shell at this location"
+
+[[input.prepend_keymap]]
+on = "<Esc>"
+run = "close"
+desc = "Cancel input"
+

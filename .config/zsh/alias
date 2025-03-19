@@ -5,7 +5,7 @@ alias la="ls -al --color"
 alias ls="ls --color"
 alias xx="&& exit"
 
-#alias v="zellij --layout /Users/tristan/.dotfiles/.config/zellij/layouts/default_air.kdl"
+alias v="yazi"
 alias e="hx"
 alias fzf="fzf --preview='cat {}'"
 alias exr="exercism"
@@ -14,3 +14,5 @@ alias glow="glow --style tokyo-night -p"
 alias lg="lazygit"
 alias yt-down="yt-dlp -f \"bestvideo[height=720]+bestaudio\" --merge-output-format mp4"
 alias scheme="racket -l r5rs"
+alias etyp='f() { typst watch "$1" & disown; open -g "${1%.typ}.pdf" & hx "$1"; }; f'
+
