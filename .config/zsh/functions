@@ -1,19 +1,26 @@
-mkcoursedir() {
-    if [ -z "$1" ]; then
-        echo "Usage: mkcoursedir <course_name>"
-        return 1
-    fi
-    
-    # Create the top-level directory
-    mkdir -p "$1"/{lab,exam,theorie/{slides,notes}}
-    
-    # Create .gitignore file with "*.pdf" entry
-    echo "*.pdf" > "$1"/.gitignore
+function f {
+  find . -iname "*${1}*" }
 
-    # Init new repo
-    git init
-    git add .
-    git commit -m "course file setup"
-    
-    echo "Course directory '$1' created with subdirectories and .gitignore file."
+# IMPORTANT: git directories not taken into account
+function fdir {
+  find . -iname "*${1}*" -type d }
+
+function fdir_no_git {
+  find . -iname "*${1}*" -type d -not -path "*/.git/*" }
+
+# function grep_ip {
+#   grep -Eo \
+#     "([0-9]{1,3}\.){3}[0-9]{1,3}" "${@}" }
+
+# function grep_url {
+#   grep -Eo \
+#     "(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]" "${@}" }
+
+function grep_ip {
+  grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" "${@}"
 }
+
+function grep_url {
+  grep -Eo "(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]" "${@}"
+}
+
