@@ -1,7 +1,6 @@
 function f {
   find . -iname "*${1}*" }
 
-# IMPORTANT: git directories not taken into account
 function fdir {
   find . -iname "*${1}*" -type d }
 
@@ -24,3 +23,67 @@ function grep_url {
   grep -Eo "(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]" "${@}"
 }
 
+function pdf_merge {
+  local output_file="merged.pdf"
+  local trash_files=false
+  local input_files=()
+
+  # Parse optional arguments
+  while [[ "$#" -gt 0 ]]; do
+    case $1 in
+      -o|--output) output_file="$2"; shift ;;
+      -rm|--remove) trash_files=true ;;
+      -*) echo "Unknown option: $1"; return 1 ;;
+      *) input_files+=("$(realpath "$1" 2>/dev/null || echo "$1")") ;;
+    esac
+    shift
+  done
+
+  # Check if at least two input files are provided
+  if [[ ${#input_files[@]} -lt 2 ]]; then
+    echo "Usage: pdf_merge [-o output_file] [-rm] file1.pdf file2.pdf [file3.pdf ...]"
+    return 1
+  fi
+
+  # Check if all input files exist
+  for file in "${input_files[@]}"; do
+    if [[ ! -f "$file" ]]; then
+      echo "ERROR: Input file '$file' does not exist"
+      return 1
+    fi
+  done
+
+  # Merge PDFs with Ghostscript
+  if ! gs -q -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE="$output_file" -dBATCH "${input_files[@]}"; then
+    echo "ERROR: PDF merge failed"
+    return 1
+  fi
+
+  # Move input files to Trash if requested
+  if $trash_files; then
+    if command -v trash >/dev/null 2>&1; then
+      if trash "${input_files[@]}" 2>/dev/null; then
+        echo "merged, input files moved to trash."
+      else
+        echo "ERROR: failed to move files to trash using 'trash' command"
+        return 1
+      fi
+    else
+      echo "Warning: 'trash' command not found. Falling back to moving files to ~/.Trash."
+      local trash_dir="$HOME/.Trash"
+      local timestamp=$(date +%Y%m%d%H%M%S)
+      local failed=false
+      for file in "${input_files[@]}"; do
+        if ! mv "$file" "$trash_dir/$(basename "$file").$timestamp"; then
+          echo "ERROR: failed to move '$file' to ~/.trash"
+          failed=true
+        fi
+      done
+      if ! $failed; then
+        echo "> merged, input files moved to ~/.trash"
+      else
+        return 1
+      fi
+    fi
+  fi
+}
