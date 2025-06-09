@@ -4,6 +4,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 alias utc="date -u '+%Y.%m.%dT%H:%M'"
+alias int-net="scutil --nwi"
 
 alias grep="grep --color=auto"
 alias cp="cp -i"
