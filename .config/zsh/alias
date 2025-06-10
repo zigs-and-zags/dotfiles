@@ -4,7 +4,10 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 alias utc="date -u '+%Y.%m.%dT%H:%M'"
-alias int-net="scutil --nwi"
+
+alias net_inf="scutil --nwi"
+alias net_int="sudo tcpdump --list-interfaces"
+alias net_cap="sudo tcpdump -en" # doesn't trigger dns lookups
 
 alias grep="grep --color=auto"
 alias cp="cp -i"
