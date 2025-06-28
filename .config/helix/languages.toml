@@ -10,18 +10,34 @@ indent = { tab-width = 2, unit = "  " }
 formatter = { command = "racket-fixw" }
 language-servers = [ "from-racket-bin" ]
 
+[[language]]
+name = "clojure"
+indent = { tab-width = 2, unit = "  " }
+formatter = { command = "cljfmt", args = [ "fix", "-" ] }
+auto-format = true
+
 [language-server.ruff]
 command = "ruff"
 args = ["server"]
 
+[language-server.pylsp.config.pylsp.plugins]
+flake8 = {enabled = false}
+autopep8 = {enabled = false}
+mccabe = {enabled = false}
+pycodestyle = {enabled = false}
+pyflakes = {enabled = false}
+pylint = {enabled = false}
+yapf = {enabled = false}
+ruff = {enabled = false}
+
 [[language]]
 name = "python"
+language-servers = ["ruff", "pylsp"]
 auto-format = true
-language-servers = [ "ruff" ]
 
 [language-server.tinymist]
 command = "tinymist"
-config = { exportPdf = "onType", outputPath = "$root/target/$dir/$name" }
+config = { exportPdf = "onType", outputPath = "$root/$dir/$name" }
 
 [[language]]
 name = "typst"
