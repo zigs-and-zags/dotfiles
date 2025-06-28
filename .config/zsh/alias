@@ -24,7 +24,7 @@ alias ai="ollama run deepseek-r1:8b"
 alias glow="glow --style dracula -p"
 alias lg="lazygit"
 alias yt-down="yt-dlp -f \"bestvideo[height=720]+bestaudio\" --merge-output-format mp4"
-alias scheme="racket -l r5rs"
+alias r5rs="racket -l r5rs"
 alias dracket="racket -l errortrace -t"
 alias etyp='f() { typst watch "$1" & disown; open -g "${1%.typ}.pdf" & hx "$1"; }; f'
 

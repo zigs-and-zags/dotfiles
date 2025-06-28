@@ -30,6 +30,7 @@ function username {  # "username 8" - generate 8 usernames
       $((RANDOM % 10000))
   done }
 
+# IMPORTANT: be carefull with the -rm flag, sometimes merging breaks certain txt
 function pdf_merge { # merges pdf's with ghostscript and trashes old files
   local output_file="merged.pdf"
   local trash_files=false
