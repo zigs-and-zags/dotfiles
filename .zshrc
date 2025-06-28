@@ -1,20 +1,17 @@
 export HOMEBREW_PATH="/opt/homebrew/bin:/opt/homebrew/sbin"
 export CUSTOM_BIN="/Users/tristan/.local/bin"
 export PATH="$HOMEBREW_PATH:$CUSTOM_BIN:$PATH"
+# TODO run with docker?
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-21.jdk"
 
-export EDITOR=hx            # prev: nvim
-export GIT_EDITOR=code      # prev: nvim
-export VISUAL=code          # prev: nvim
-export DIFFPROG="code"      # TODO
+export EDITOR=hx
+export GIT_EDITOR=code
+export VISUAL=code
+export DIFFPROG="code"
 export MANWIDTH=999
-
-export ZEIT_DB=~/.config/zeit/zeit.db
 
 autoload -Uz compinit && compinit   # loads autocompletions
 _comp_options+=(globdots)           # includes hidden files.
-# Setup custom zsh functions
-fpath=(~/.config/zsh/functions $fpath)
-autoload -Uz mkcoursedir            # lazy load functions
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local}/share/zinit/zinit.git"
@@ -27,6 +24,7 @@ fi
 
 # Source and load all we need
 source "${ZINIT_HOME}/zinit.zsh"
+[ -f ~/.config/zsh/functions ] && source ~/.config/zsh/functions
 [ -f ~/.config/zsh/alias ] && source ~/.config/zsh/alias
 
 # Zsh plugins with zinit
@@ -53,13 +51,12 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-# Set custom prompt
+# Custom prompt style
 autoload -Uz vcs_info
 zstyle ":vcs_info:*" enable git
 precmd() { vcs_info }
 setopt prompt_subst
 zstyle ':vcs_info:git:*' formats " %F{172}[%F{247}%b%F{172}]"
-
 PROMPT="%F{117}%c%{$reset_color%}"
 PROMPT+="\$vcs_info_msg_0_ "
 

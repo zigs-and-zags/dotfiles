@@ -21,4 +21,8 @@ brew autoremove
 brew cleanup
 echo "Homebrew packages have been installed!"
 
+echo "Clean install of xcode clitools"
+sudo rm -rf /Library/Developer/CommandLineTools
+xcode-select --install
+
 exit 0
